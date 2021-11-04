@@ -1,0 +1,29 @@
+Clock construction
+
+The only thing we write inside the HTML is a div with an id of ‘clock’ in the particular place we want our clock to appear on screen. 
+The rest exist in the JS code.
+
+The Date object is a JavaScript object that represents the date and time. Inside the object, the date is stored as a number in milliseconds since 1st January 1970.
+To create the Date object, we use the Date constructor. Creating a new Date object will return the current date and time. 
+The output will change depending on our locale.
+This Date object has multiple methods on it. These methods are used to extract different values from the object. For example, to extract the hour from the object, we have a method called getHours().
+Similarly, getMinutes() method will give us the minutes, and the getSeconds() will provide the seconds. Another thing to note while using Date object is that it'll return the hour in 24-hour format.
+
+To that we can add diferent characteristics for example if we want to change the 24-hour clock to a 12-hour clock.
+let period = 'AM';
+if (hours === 0) {
+hours = 12;
+}
+if (hours > 12) {
+hours = hours - 12;
+period = 'PM';
+}
+
+And in the end we set the innerText of the clock to be a template literal containing all the new information we added:
+const clock = document.querySelector('#clock');
+clock.innerText = `${hours} : ${minutes} : ${seconds} ${period}`;
+
+At the end we should call our clock using setInterval 
+setInterval(clockTicking, 1000);
+
+
